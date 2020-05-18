@@ -1,6 +1,7 @@
 from django import template
 from django.conf import settings
-from django.utils import safestring, six
+from django.utils import safestring
+import six
 
 # Token type constants moved in Django 2.1
 try:
