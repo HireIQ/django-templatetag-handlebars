@@ -5,7 +5,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 
 setup(
     name='django-templatetag-handlebars',
-    version='1.3.2.dev0',
+    version='1.3.2.dev2',
     author='Mathieu Leplatre',
     author_email='mathieu.leplatre@makina-corpus.com',
     url='https://github.com/makinacorpus/django-templatetag-handlebars',
@@ -14,7 +14,7 @@ setup(
     long_description=open(os.path.join(here, 'README.rst')).read() + '\n\n' +
                      open(os.path.join(here, 'CHANGES')).read(),
     license='LPGL, see LICENSE file.',
-    install_requires=['django'],
+    install_requires=['django', 'six'],
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
