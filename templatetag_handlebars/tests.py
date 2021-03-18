@@ -89,3 +89,27 @@ class TemplateTagTest(TestCase):
         # HTML should not be escaped
         self.assertTrue('<p>' in rendered)
         self.assertTrue('</p>' in rendered)
+
+    def test_verbatim(self):
+        """
+        The {% verbatim %} tag renders all content exactly as in the template.
+        """
+        inner_template = """
+        <div class="widget">
+        {{#if doUsefulness}}
+            <h1>Useful Widget</h1>
+            <h2>{{title}}</h2>
+            <p>{{description}}</p>
+            <p>{{{someRawValue}}}</p>
+        {{/if}}
+        </div>
+        """
+        full_template = f"""
+        {{% load templatetag_handlebars %}}
+        {{% verbatim %}}
+        {inner_template}
+        {{% endverbatim %}}
+        """
+        print(full_template)
+        rendered = engine.from_string(full_template).render(Context())
+        self.assertHTMLEqual(rendered, inner_template)

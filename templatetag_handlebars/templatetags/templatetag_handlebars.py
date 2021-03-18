@@ -42,8 +42,9 @@ def verbatim_tags(parser, token, endtagname):
     like url {% url name %}. {% trans "foo" %} or {% csrf_token %} within.
     """
     text_and_nodes = []
-    while 1:
-        token = parser.tokens.pop(0)
+    while parser.tokens:
+        token = parser.next_token()
+
         if token.contents == endtagname:
             break
 
